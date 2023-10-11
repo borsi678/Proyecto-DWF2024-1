@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryComponent } from './components/category/category.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -8,8 +9,9 @@ import { CategoryComponent } from './components/category/category.component';
   declarations: [
     CategoryComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ]
 })
 export class ProductModule { }
