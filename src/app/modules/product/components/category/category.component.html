@@ -1,54 +1,72 @@
 <div style="max-width: 1280px; margin: auto;padding-top: 10px;">
-    <div class="card border-dark mb-3">
+    <div class="card border-dark">
 
       <!--Titulo-->
 
       <div class="card-header">
-        <div class="row row-cols-5">
+        <div class="row">
           <div class="col-md">
             <h5 class="table-title">Categorias</h5>
           </div>
-          <div class="col-md"></div>
-          <div class="col-md"></div>
-          <div class="col-md"></div>
           <div class="col-md">
-            <button type="button" class="btn btn-dark" (click)="showModalForm()">Nueva categoria</button>
+            <button type="button" class="btn btn-primary btn-new-ctry" (click)="showModalForm()"><i class="ph ph-list-plus icon-add-category"></i>Nueva categoria</button>
           </div>
         </div>
       </div>
 
-      <div class="card-body">
-
+          <div class="card-body">
             <!--Tabla-->
-            <div class="bs-component">
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th scope="col">Category-id</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Status</th>
+                    <tr class="t_head">
+                        <th  scope="col">No.</th>
+                        <th  scope="col">Code</th>
+                        <th  scope="col">Category</th>
+                        <th  scope="col">Status</th>
+                        <th  scope="col">More</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="table-dark" *ngFor="let category of categories; let i = index">
-                        <th scope="row">{{i+1}}</th>
-                        <td>{{category.code}}</td>
-                        <td>{{category.category}}</td>
-                        <td>{{category.status == 0 ? "Inactivo" : "Activo"}}</td>
+                    <tr class="table-dark t_value" *ngFor="let category of categories; let i = index">
+                        <th  scope="row">{{i+1}}</th>
+                        <td >{{category.code}}</td>
+                        <td >{{category.category}}</td>
+                        <td >
+                          <div class="td-status" [ngClass]="{'td-status-enable' : category.status == 1,
+                                           'td-status-disable' : category.status == 0}">
+                            {{category.status == 0 ? "Inactivo " : "Activo"}}
+                          </div>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                              <button type="button" data-bs-toggle="dropdown" aria-expanded="false"  aria-haspopup="true" class="dropdown-button">
+                                  <i class="ph ph-caret-double-down"></i>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <a class="dropdown-item" (click)="updateCategory(category)" >
+                                  <i class="ph ph-note-pencil icon-text-ul"></i>Editar
+                                </a>
+                                <a *ngIf="category.status == 0" class="dropdown-item enable-item" (click)="enableCategory(category.category_id)">
+                                  <i class="ph ph-check icon-text-ul"></i> Activar
+                                </a>
+                                <a *ngIf="category.status == 1" class="dropdown-item disable-item" (click)="disableCategory(category.category_id)">
+                                  <i class="ph ph-x icon-text-ul"></i> Desactivar
+                                </a>
+                              </ul>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
+          </div>
     </div>
 
     <!-- Formulario Modal-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="modalForm" data-bs-backdrop="static">
+    <div class="modal fade"  tabindex="-1" role="dialog" id="modalForm" data-bs-backdrop="static">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Nueva categoria</h5>
+              <h5 class="modal-title" >{{ categoryUpdated == 0 ? "Registrar" : "Actualizar" }} categoria </h5>
             </div>
             <div class="modal-body">
               <!-- Formulario  -->
@@ -87,5 +105,5 @@
           </div>
         </div>
       </div>
-</div>
+    </div>
 </div>

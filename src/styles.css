@@ -5,13 +5,70 @@
   top: 50%;
   transform: translateY(-50%);
 }
+.t_head{
+  text-align: center;
+}
+.t_value{
+  text-align: center;
+}
 
-/*Fondo */
+.td-status{
+  text-align: center;
+  border-radius: 10px;
+  width: 90px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.td-status-enable{
+  background-color: #4bbf73;
+}
+
+.td-status-disable{
+  background-color: #d9534f;
+}
+
+.btn-new-ctry{
+  float: right;
+  width: 200px;
+}
+
+.dropdown-button {
+  color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  color: black !important;
+}
+
+.enable-item {
+  color: #4bbf73 !important;
+  cursor: pointer;
+}
+
+.disable-item {
+  color: #d9534f !important;
+  cursor: pointer;
+}
+/* Fondo */
 .fondo{
   background-color: #0a0a0a;
   height: 100vh;
 }
 
+/* Icono */
+.icon-text-ul {
+  font-size: 14px;
+}
+
+.icon-add-category {
+  margin-right: 10px;
+  font-size: 17px;
+}
 @charset "UTF-8";
 /*!
  * Bootswatch v5.3.2 (https://bootswatch.com)
