@@ -3,6 +3,7 @@ import { Category } from '../../_models/category';
 import { FormBuilder, Validators } from '@angular/forms';
 import {CategoryService} from '../../_services/category.service';
 import {resolve} from "@angular/compiler-cli";
+import Swal from 'sweetalert2';
 declare var $: any;
 
 @Component({
@@ -32,10 +33,9 @@ export class CategoryComponent {
     this.categoryService.getCategories().subscribe(
       res => {
         this.categories=res;
-        console.log("categorias cargadas")
       },
-      err => {
-        console.log("error al cargar categorias")
+      error => {
+        this.alertError(error.error.message);
       }
     );
   }
@@ -70,12 +70,12 @@ export class CategoryComponent {
 
     this.categoryService.createCategory(this.form.value).subscribe(
       res => {
-        console.log("creado categoria")
         this.getCategories(); //consulta las categorias actualizadas
         $("#modalForm").modal("hide"); //oculta el modal
+        this.alertSuccess("La categoria ha sido agregada");
       },
       error => {
-        console.log("fallo agregar categoria")
+        this.alertError(error.error.message);
       }
     )
   }
@@ -86,13 +86,12 @@ export class CategoryComponent {
     console.log(category);
     this.categoryService.updateCategory(category,category.id).subscribe(
       res => {
-
         this.getCategories();
-        console.log("categoria actualizada");
         $("#modalForm").modal("hide");
+        this.alertSuccess("La categoria ha sido actualizada");
       },
       error => {
-        console.log("error al actualziar categoria");
+        this.alertError(error.error.message);
       }
     )
 
@@ -102,12 +101,12 @@ export class CategoryComponent {
   disableCategory(id: number){
     this.categoryService.disableCategory(id).subscribe(
       res => {
-        console.log("categoria deshabilitada");
+        this.alertSuccess("La categoria ha sido desactivada");
 
         this.getCategories();
       },
       error => {
-        console.log("error al deshabilitar categorias");
+        this.alertError(error.error.message);
       }
     );
   }
@@ -115,14 +114,41 @@ export class CategoryComponent {
   enableCategory(id: number){
     this.categoryService.enableCategory(id).subscribe(
       res => {
-        console.log("categoria habilitada");
+        this.alertSuccess("La categoria ha sido activada");
 
         this.getCategories();
       },
       error => {
-        console.log("error al habilitar categorias");
+        this.alertError(error.error.message)
       }
     );
+  }
+
+  alertSuccess(message: string){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      iconColor: '#4bbf73',
+      toast: true,
+      text: message,
+      background: '#dbf2e3',
+      color : '#1e4c2e',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+  alertError(message : string){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      iconColor: '#d9534f',
+      toast: true,
+      showConfirmButton: false,
+      text: message,
+      color: '#572120',
+      background: '#f7dddc',
+      timer: 2000
+    });
   }
 
 }

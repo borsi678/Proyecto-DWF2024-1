@@ -27,7 +27,6 @@ export class CategoryService {
   }
 
   updateCategory(category : any, id : number){
-    console.log(category);
     return this.http.put(this.url + this.route + "/" + id, category);
   }
 }
