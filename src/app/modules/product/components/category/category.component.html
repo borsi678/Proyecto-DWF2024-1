@@ -43,7 +43,7 @@
                                   <i class="ph ph-caret-double-down"></i>
                               </button>
                               <ul class="dropdown-menu">
-                                <a class="dropdown-item" (click)="updateCategory(category)" >
+                                <a class="dropdown-item" (click)="showModalFormUpdated(category)" >
                                   <i class="ph ph-note-pencil icon-text-ul"></i>Editar
                                 </a>
                                 <a *ngIf="category.status == 0" class="dropdown-item enable-item" (click)="enableCategory(category.category_id)">
@@ -66,7 +66,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" >{{ categoryUpdated == 0 ? "Registrar" : "Actualizar" }} categoria </h5>
+              <h5 class="modal-title" >{{ !categoryUpdated ? "Registrar" : "Actualizar" }} categoria </h5>
             </div>
             <div class="modal-body">
               <!-- Formulario  -->
