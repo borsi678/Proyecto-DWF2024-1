@@ -1,1 +1,67 @@
-<p>product works!</p>
+<div style="max-width: 1280px; margin: auto;padding-top: 10px;">
+<div class="card border-dark">
+
+  <!--Titulo-->
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md">
+        <h5 class="table-title">Productos</h5>
+      </div>
+      <div class="col-md">
+        <button type="button" class="btn btn-primary btn-new-ctry" ><i class="ph ph-list-plus icon-add-category"></i>Nuevo producto</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <!--Tabla-->
+    <table class="table table-hover">
+      <thead>
+      <tr class="t_head">
+        <th  scope="col">No.</th>
+        <th  scope="col">GTIN</th>
+        <th  scope="col">Producto</th>
+        <th  scope="col">Precio</th>
+        <th  scope="col">Estatus</th>
+        <th  scope="col">Más</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-dark t_value" *ngFor="let product of products; let i = index">
+        <th  scope="row">{{i+1}}</th>
+        <td >{{product.gtin}}</td>
+        <td >{{product.product}}</td>
+        <td >{{product.price}}</td>
+        <td >
+          <div class="td-status" [ngClass]="{'td-status-enable' : product.status == 1,
+                                           'td-status-disable' : product.status == 0}">
+            {{product.status == 0 ? "Inactivo " : "Activo"}}
+          </div>
+        </td>
+        <td>
+          <div class="dropdown">
+            <button type="button" data-bs-toggle="dropdown" aria-expanded="false"  aria-haspopup="true" class="dropdown-button">
+              <i class="ph ph-caret-double-down"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <a class="dropdown-item" >
+                <i class="ph ph-note-pencil icon-text-ul"></i>Editar
+              </a>
+              <a *ngIf="product.status == 0" class="dropdown-item enable-item" (click)="enableProduct(product.product_id)" >
+                <i class="ph ph-check icon-text-ul"></i> Activar
+              </a>
+              <a *ngIf="product.status == 1" class="dropdown-item disable-item" (click)="disableProduct(product.product_id)">
+                <i class="ph ph-x icon-text-ul"></i> Desactivar
+              </a>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>

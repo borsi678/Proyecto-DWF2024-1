@@ -13,7 +13,7 @@ export class ProductService {
   constructor(private http : HttpClient) { }
 
   getProducts(){
-    return this.http.get(this.url + this.route );
+    return this.http.get<Product[]>(this.url + this.route );
   }
 
   createProducts(product : any){
@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   deleteProduct(id : number){
-    return this.http.delete(this.url + this.http + '/' + id);
+    return this.http.delete(this.url + this.route + '/' + id);
   }
 
   activateProduct(id : number){
