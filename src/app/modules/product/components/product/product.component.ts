@@ -3,6 +3,9 @@ import {Product} from "../../_models/product";
 import { FormBuilder, Validators } from '@angular/forms';
 import {ProductService} from "../../_services/product.service";
 import Swal from 'sweetalert2';
+import {Category} from "../../../category/_models/category";
+import {CategoryService} from "../../_services/category.service";
+import {Router} from "@angular/router";
 declare var $: any;
 @Component({
   selector: 'app-product',
@@ -11,10 +14,19 @@ declare var $: any;
 })
 export class ProductComponent {
   products: Product[] = [];
+  categories: Category[] = [];
   productUodated: boolean = false;
   submitted: boolean = false;
 
   form = this.formBuilder.group({
+    category_id: [0, [Validators.required]],
+    description: ["", [Validators.required]],
+    gtin: ["", [Validators.required]],
+    price: [0, [Validators.required]],
+    product: ["", [Validators.required]],
+    product_id: [0, []],
+    status: [0, []],
+    stock: [0, [Validators.required]]
 
   });
   ngOnInit(){
@@ -22,7 +34,9 @@ export class ProductComponent {
   }
 
   constructor(private productService : ProductService,
-              private formBuilder : FormBuilder) {}
+              private categoryService : CategoryService,
+              private formBuilder : FormBuilder,
+              private router : Router) {}
 
   getProducts(){
     this.productService.getProducts().subscribe(
@@ -57,6 +71,50 @@ export class ProductComponent {
         this.alertError(error.error.message);
       }
     )
+  }
+
+  createProduct(){
+    if (this.form.invalid) return;
+
+    this.productService.createProduct(this.form.value).subscribe(
+      res => {
+        this.getProducts();
+        $("#modalForm").modal("hide");
+        this.alertSuccess("El producto ha sido agregado.");
+      },
+      error => {
+        this.alertError(error.error.message);
+      }
+    );
+  }
+
+  getActiveCategories(){
+    this.categoryService.getActiveCategories().subscribe(
+      res =>{
+        this.categories=res;
+      },
+      error => {
+        this.alertError(error.error.message);
+      }
+    );
+  }
+
+  showProduct(gtin : string){
+    this.router.navigate(['product/' + gtin]);
+  }
+
+  /*METHODS FORM*/
+
+  showModalForm(){
+    this.form.reset();
+    this.productUodated = false;
+    this.submitted=false;
+    this.getActiveCategories();
+    $("#modalForm").modal("show");
+  }
+  onSubmit(){
+    this.submitted=true;
+    this.createProduct();
   }
 
   /*Sweetalert methods*/

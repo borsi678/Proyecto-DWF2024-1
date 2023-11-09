@@ -77,13 +77,12 @@ export class CategoryComponent {
       error => {
         this.alertError(error.error.message);
       }
-    )
+    );
   }
 
 
   updateCategory(category : any){
     if(this.form.invalid) return;
-    console.log(category);
     this.categoryService.updateCategory(category,category.id).subscribe(
       res => {
         this.getCategories();

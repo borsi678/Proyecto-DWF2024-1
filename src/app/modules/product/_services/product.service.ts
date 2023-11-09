@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get<Product[]>(this.url + this.route );
   }
 
-  createProducts(product : any){
+  createProduct(product : any){
     return this.http.post(this.url + this.route, product);
   }
 
