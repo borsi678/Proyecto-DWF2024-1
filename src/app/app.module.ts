@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { ProductModule } from "./modules/product/product.module";
-import { CategoryComponent } from './modules/product/components/category/category.component';
+import { CommonModule } from '@angular/common';
+import { CategoryModule } from "./modules/category/category.module";
+import { CategoryComponent } from './modules/category/components/category/category.component';
 import { HttpClientModule } from '@angular/common/http';
+import {ProductModule} from "./modules/product/product.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,8 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductModule,
-    HttpClientModule
+    CategoryModule,
+    HttpClientModule,
+    CommonModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

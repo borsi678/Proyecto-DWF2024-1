@@ -29,17 +29,24 @@
   background-color: #d9534f;
 }
 
-.btn-new-ctry{
-  float: right;
-  width: 200px;
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+  margin-bottom: 15px;
 }
 
-.dropdown-button {
-  color: white;
+.quantity input {
+  -webkit-appearance: none;
   border: none;
-  background: none;
-  cursor: pointer;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
 }
+
+
+
 
 .dropdown-item {
   color: black !important;
@@ -68,6 +75,79 @@
 .icon-add-category {
   margin-right: 10px;
   font-size: 17px;
+}
+
+.color-red {
+  color: #d9534f;
+}
+
+
+/* Botones*/
+
+.btn-new-ctry{
+  float: right;
+  width: 200px;
+}
+
+.dropdown-button {
+  color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.btn-return:hover{
+  color: #d9534f;
+}
+
+
+.btn-edit-product:hover{
+  color: #1f9bcf;
+}
+
+.btn-span{
+  cursor: pointer;
+}
+
+.btn-add-img:hover{
+  color: #4bbf73;
+}
+
+.btn-del-img:hover{
+  color: #d9534f;
+}
+
+
+
+
+.button-quantity {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.minus-btn img {
+  margin-bottom: 3px;
+}
+.plus-btn img {
+  margin-top: 2px;
+}
+
+button:focus,
+input:focus {
+  outline:0;
+}
+
+/* Forms*/
+.input-price{
+  max-width: 15px;
+
+}
+
+.price-sign{
+  margin-top: 12px;
+  color: #d9534f;
 }
 @charset "UTF-8";
 /*!
