@@ -8,6 +8,8 @@ import { CategoryModule } from "./modules/category/category.module";
 import { CategoryComponent } from './modules/category/components/category/category.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ProductModule} from "./modules/product/product.module";
+import {CustomerModule} from "./modules/customer/customer.module";
+import {RegionModule} from "./modules/region/region.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {ProductModule} from "./modules/product/product.module";
     CategoryModule,
     HttpClientModule,
     CommonModule,
-    ProductModule
+    ProductModule,
+    CustomerModule,
+    RegionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Category } from '../../_models/category';
 import { FormBuilder, Validators } from '@angular/forms';
 import {CategoryService} from '../../_services/category.service';
-import {resolve} from "@angular/compiler-cli";
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -74,9 +73,7 @@ export class CategoryComponent {
         $("#modalForm").modal("hide"); //oculta el modal
         this.alertSuccess("La categoria ha sido agregada");
       },
-      error => {
-        this.alertError(error.error.message);
-      }
+      error => this.alertError(error.error.message)
     );
   }
 
@@ -88,11 +85,9 @@ export class CategoryComponent {
         this.getCategories();
         $("#modalForm").modal("hide");
         this.alertSuccess("La categoria ha sido actualizada");
-      },
-      error => {
-        this.alertError(error.error.message);
-      }
-    )
+        },
+      error => this.alertError(error.error.message)
+      );
 
   }
 
@@ -116,10 +111,7 @@ export class CategoryComponent {
         this.alertSuccess("La categoria ha sido activada");
 
         this.getCategories();
-      },
-      error => {
-        this.alertError(error.error.message)
-      }
+      }, error => this.alertError(error.error.message)
     );
   }
 
