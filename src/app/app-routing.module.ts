@@ -5,6 +5,7 @@ import {ProductComponent} from "./modules/product/components/product/product.com
 import {ProductImgComponent} from "./modules/product/components/product-img/product-img.component";
 import {CustomerComponent} from "./modules/customer/components/customer/customer.component";
 import {RegionComponent} from "./modules/region/components/region/region.component";
+import {CustomerImgComponent} from "./modules/customer/components/customer-img/customer-img.component";
 
 const routes: Routes = [
   { path: "category", component: CategoryComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "", component: CategoryComponent },
   { path: "product/:gtin", component: ProductImgComponent},
   { path: "customer", component: CustomerComponent},
+  { path: "customer/:rfc", component: CustomerImgComponent},
   { path: "region", component: RegionComponent}
 ];
 

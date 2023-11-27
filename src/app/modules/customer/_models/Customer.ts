@@ -11,18 +11,16 @@ export class Customer{
   status: number;
   surname:	string;
 
-  constructor(address: string, customer_id: number,
-              mail: string, name: string, surname: string,
-              rfc: string, status: number) {
-    this.address=address;
-    this.customer_id= customer_id;
+  constructor() {
+    this.address="";
+    this.customer_id= 0;
     this.image = new CustomerImage;
-    this.mail = mail;
-    this.name = name;
+    this.mail = "";
+    this.name = "";
     this.region_id = 0;
-    this.rfc = rfc;
-    this.status = status;
-    this.surname = surname;
+    this.rfc = "";
+    this.status = 0;
+    this.surname = "";
   }
 
 }

@@ -82,7 +82,7 @@ export class CustomerComponent {
   }
 
   getRegions() {
-    this.regionService.getRegions().subscribe(
+    this.regionService.getActiveRegions().subscribe(
         res => this.regions = res,
         error => this.alertError(error.error.message)
     );

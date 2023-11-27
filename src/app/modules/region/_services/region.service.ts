@@ -32,7 +32,7 @@ export class RegionService {
     return this.http.delete(this.url + this.route + "/" + id);
   }
 
-  gitactivateRegion(id : number){
+  activateRegion(id : number){
     return this.http.put(this.url + this.route + "/" + id + "/activate", null);
   }
 
