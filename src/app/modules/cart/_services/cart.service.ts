@@ -21,7 +21,7 @@ export class CartService {
   }
 
   getCart(rfc : string){
-    return this.http.get(this.url + this.route + '/' + rfc);
+    return this.http.get<Cart[]>(this.url + this.route + '/' + rfc);
   }
 
   deleteCart(rfc : string){
