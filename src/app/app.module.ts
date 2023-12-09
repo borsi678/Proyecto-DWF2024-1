@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {ProductModule} from "./modules/product/product.module";
 import {CustomerModule} from "./modules/customer/customer.module";
 import {RegionModule} from "./modules/region/region.module";
+import {CartModule} from "./modules/cart/cart.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {RegionModule} from "./modules/region/region.module";
     CommonModule,
     ProductModule,
     CustomerModule,
-    RegionModule
+    RegionModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

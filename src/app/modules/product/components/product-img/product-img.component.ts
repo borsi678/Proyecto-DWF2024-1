@@ -8,6 +8,8 @@ import {Category} from "../../../category/_models/category";
 import {CategoryService} from "../../_services/category.service";
 import {ProductImagesService} from "../../_services/product-images.service";
 import {ProductImg} from "../../_models/productImg";
+import {Cart} from "../../../cart/_models/Cart";
+import {CartService} from "../../../cart/_services/cart.service";
 import {NgxPhotoEditorService} from "ngx-photo-editor";
 
 declare var $: any;
@@ -25,6 +27,7 @@ export class ProductImgComponent {
   pathImg : string = "../../../../../assets/imagenes/";
   category : Category = new Category(0, "", "", 0);
   categories : Category[] = [];
+  cart = new Cart();
   submitted : boolean = false;
 
   form = this.formBuilder.group({
@@ -45,7 +48,8 @@ export class ProductImgComponent {
               private router : Router,
               private productImgService : ProductImagesService,
               private route : ActivatedRoute,
-              private service : NgxPhotoEditorService,) {}
+              private service : NgxPhotoEditorService,
+              private cartService : CartService) {}
 
   ngOnInit(){
     this.gtin = this.route.snapshot.paramMap.get('gtin');
@@ -53,7 +57,16 @@ export class ProductImgComponent {
       this.getProduct(this.gtin);
       return;
     }
-    this.alertError("GTIN del producto invalido")
+    this.alertError("GTIN del producto invalido");
+
+  }
+
+  initCart(){
+    this.cart.gtin=this.gtin;
+    this.cart.image=this.productImgs[0].image;
+    this.cart.product=this.product;
+    this.cart.quantity=0;
+    this.cart.rfc="SAAI920101A02";
   }
 
   getProduct(gtin : string){
@@ -158,11 +171,16 @@ export class ProductImgComponent {
       res =>{
         this.alertSuccess("Se ha eliminado la imagen");
         this.getProductImg();
-      },
-      error => {
-        this.alertError(error.error.message);
-      }
-    )
+      }, error => this.alertError(error.error.message)
+    );
+  }
+
+  addToCart(){
+    this.initCart();
+    this.cartService.addToCart(this.cart).subscribe(
+      res => this.alertSuccess("Se ha agregado el producto al carrito"),
+      error => this.alertError(error.error.message)
+    );
   }
 
   /*Form methods*/
