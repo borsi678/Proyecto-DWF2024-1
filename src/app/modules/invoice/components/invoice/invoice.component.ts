@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import {Invoice} from "../../_models/Invoice";
+import {DtoInvoiceList} from "../../_models/DtoInvoiceList";
 import {Item} from "../../_models/Item";
-import { FormBuilder, Validators } from '@angular/forms';
 import {InvoiceService} from "../../_services/invoice.service";
 import Swal from "sweetalert2";
+import {ActivatedRoute, Router} from "@angular/router";
 declare var $: any;
 
 @Component({
@@ -12,7 +13,32 @@ declare var $: any;
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent {
+  private rfc: any | string = "";
+  private invoices : DtoInvoiceList[] = [];
 
+  constructor(private invoiceService : InvoiceService,
+              private router : Router,
+              private route : ActivatedRoute) {}
+
+  ngOnInit(){
+    this.rfc = this.route.snapshot.paramMap.get('rfc');
+    if(this.rfc){
+      this.getInvoices();
+      return;
+    }
+    this.alertError("RFC del cliente invalido");
+
+  }
+  getInvoices(){
+    this.invoiceService.getInvoices(this.rfc).subscribe(
+        res => this.invoices = res,
+        error => this.alertError(error.error.message)
+    );
+  }
+
+  showInvoice(id : number){
+    this.router.navigate(['invoice/'+id]);
+  }
   /* SweetAlert*/
   alertSuccess(message: string){
     Swal.fire({

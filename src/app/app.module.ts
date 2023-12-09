@@ -11,6 +11,7 @@ import {ProductModule} from "./modules/product/product.module";
 import {CustomerModule} from "./modules/customer/customer.module";
 import {RegionModule} from "./modules/region/region.module";
 import {CartModule} from "./modules/cart/cart.module";
+import {InvoiceModule} from "./modules/invoice/invoice.module";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {CartModule} from "./modules/cart/cart.module";
     ProductModule,
     CustomerModule,
     RegionModule,
-    CartModule
+    CartModule,
+    InvoiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

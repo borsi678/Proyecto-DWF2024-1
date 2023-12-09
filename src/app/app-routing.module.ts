@@ -7,6 +7,8 @@ import {CustomerComponent} from "./modules/customer/components/customer/customer
 import {RegionComponent} from "./modules/region/components/region/region.component";
 import {CustomerImgComponent} from "./modules/customer/components/customer-img/customer-img.component";
 import {CartComponent} from "./modules/cart/components/cart/cart.component";
+import {InvoiceComponent} from "./modules/invoice/components/invoice/invoice.component";
+import {InvoiceDetailsComponent} from "./modules/invoice/components/invoice-details/invoice-details.component";
 
 const routes: Routes = [
   { path: "category", component: CategoryComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: "customer/:rfc", component: CustomerImgComponent},
   { path: "region", component: RegionComponent},
   { path: "cart/:rfc", component: CartComponent},
+  { path: "invoice-customer/:rfc", component: InvoiceComponent},
+  { path: "invoice/:id", component: InvoiceDetailsComponent}
 ];
 
 @NgModule({
