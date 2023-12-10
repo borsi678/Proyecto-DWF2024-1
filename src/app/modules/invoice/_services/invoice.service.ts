@@ -14,7 +14,7 @@ export class InvoiceService {
 
   constructor(private http : HttpClient) { }
 
-  getInvoice(id : number){
+  getInvoice(id : string){
     return this.http.get<Invoice>(this.url + this.route + '/' + id + '/items');
   }
 

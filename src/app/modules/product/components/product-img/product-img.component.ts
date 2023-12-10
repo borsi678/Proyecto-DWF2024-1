@@ -65,7 +65,7 @@ export class ProductImgComponent {
     this.cart.gtin=this.gtin;
     this.cart.image=this.productImgs[0].image;
     this.cart.product=this.product;
-    this.cart.quantity=0;
+    this.cart.quantity=1;
     this.cart.rfc="SAAI920101A02";
   }
 

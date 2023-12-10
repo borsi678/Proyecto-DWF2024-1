@@ -1,1 +1,111 @@
-<p>invoice-details works!</p>
+<div style="max-width: 1280px; margin: auto;padding-top: 10px;">
+    <div class="card border-dark">
+
+        <!--Titulo-->
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md">
+                    <h4 class="table-title">Factura</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <h5>Datos del cliente</h5>
+                    <h6>{{customer.name}} {{customer.surname}}</h6>
+                    <div class="row">
+                        <h6 class="col-2">RFC:</h6>
+                        <p class="col-4">{{customer.rfc}} </p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-3">Direccion:</h6>
+                        <p class="col-6">{{customer.address}} </p>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-info">
+                                <th scope="row">No. de Factura:</th>
+                                <td>#672341</td>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="row">Fecha:</th>
+                                <td>{{invoice.created_at}}</td>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="row">Total:</th>
+                                <td>${{invoice.total}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          <div class="row">
+            <h5>Detalles de la compra</h5>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">GTIN</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio Unitario</th>
+                  <th scope="col">Impuestos</th>
+                  <th scope="col">Subtotal</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-primary" *ngFor="let item of invoice.items; let i = index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{item.gtin}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>${{item.unit_price}}</td>
+                  <td>{{item.taxes}}</td>
+                  <td>${{item.subtotal}}</td>
+                  <td>${{item.total}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div></div>
+            <div>
+              <div class="col-2">
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="table-info">
+                    <th scope="row">Subtotal</th>
+                    <td>{{invoice.subtotal}}</td>
+                  </tr>
+                  <tr class="table-info">
+                    <th scope="row">Impuestos:</th>
+                    <td>{{invoice.taxes}}</td>
+                  </tr>
+                  <tr class="table-info">
+                    <th scope="row">Total:</th>
+                    <td>${{invoice.total}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

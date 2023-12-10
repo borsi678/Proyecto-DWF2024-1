@@ -3,7 +3,8 @@ import {Cart} from "../../_models/Cart";
 import { FormBuilder, Validators } from '@angular/forms';
 import {CartService} from "../../_services/cart.service";
 import Swal from 'sweetalert2';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {InvoiceService} from "../../../invoice/_services/invoice.service";
 declare var $: any;
 
 @Component({
@@ -18,7 +19,9 @@ export class CartComponent {
 
   constructor(private formBuilder : FormBuilder,
               private cartService : CartService,
-              private route : ActivatedRoute) {}
+              private invoiceService : InvoiceService,
+              private route : ActivatedRoute,
+              private router : Router) {}
 
   ngOnInit(){
     this.rfc=this.route.snapshot.paramMap.get('rfc');
@@ -53,6 +56,14 @@ export class CartComponent {
       },
       error => this.alertError(error.error.message)
     );
+  }
+
+  showInvoice(){
+    this.invoiceService.generateInvoice(this.rfc).subscribe(
+      res => this.alertSuccess('Se ha realizado la compra'),
+      error => this.alertError(error.error.message)
+    );
+    this.router.navigate(['invoice-customer/'+this.rfc]);
   }
 
   /* SweetAlert*/

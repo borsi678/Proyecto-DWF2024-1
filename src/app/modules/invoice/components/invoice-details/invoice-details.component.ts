@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+import {Invoice} from "../../_models/Invoice";
+import {InvoiceService} from "../../_services/invoice.service";
+import {ActivatedRoute} from "@angular/router";
 import Swal from "sweetalert2";
+import {Customer} from "../../../customer/_models/Customer";
+import {Item} from "../../_models/Item";
 
 @Component({
   selector: 'app-invoice-details',
@@ -8,6 +13,32 @@ import Swal from "sweetalert2";
 })
 export class InvoiceDetailsComponent {
 
+  invoice : Invoice = new Invoice();
+  customer : Customer = new Customer();
+  items : Item[] = [];
+
+  constructor(private route : ActivatedRoute,
+              private invoiceService : InvoiceService) {
+  }
+  ngOnInit(){
+    let id = this.route.snapshot.paramMap.get('id');
+    if(id){
+      this.getInvoice(id);
+      return;
+    }
+    this.alertError("Numero de factura invalido");
+  }
+
+  getInvoice(id : string){
+    this.invoiceService.getInvoice(id).subscribe(
+        res => {
+          this.invoice = res
+          this.customer =this.invoice.customer;
+          this.items = this.invoice.items;
+        },
+        error => this.alertError(error.error.message)
+    );
+  }
   /* SweetAlert*/
   alertSuccess(message: string){
     Swal.fire({

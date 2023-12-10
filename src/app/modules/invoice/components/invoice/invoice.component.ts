@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {Invoice} from "../../_models/Invoice";
 import {DtoInvoiceList} from "../../_models/DtoInvoiceList";
-import {Item} from "../../_models/Item";
 import {InvoiceService} from "../../_services/invoice.service";
 import Swal from "sweetalert2";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -14,7 +12,7 @@ declare var $: any;
 })
 export class InvoiceComponent {
   private rfc: any | string = "";
-  private invoices : DtoInvoiceList[] = [];
+  invoices : DtoInvoiceList[] = [];
 
   constructor(private invoiceService : InvoiceService,
               private router : Router,
