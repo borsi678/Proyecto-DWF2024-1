@@ -4,13 +4,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProductComponent } from './components/product/product.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductImgComponent } from './components/product-img/product-img.component';
+import { ProductImgComponent } from './components/product-details/product-img.component';
 import {NgxPhotoEditorModule} from "ngx-photo-editor";
+import { ProductsImgComponent } from './components/products-img/products-img.component';
 
 @NgModule({
   declarations: [
     ProductComponent,
-    ProductImgComponent
+    ProductImgComponent,
+    ProductsImgComponent
   ],
   imports: [
     ReactiveFormsModule,

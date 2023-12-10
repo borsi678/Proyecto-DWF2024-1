@@ -12,6 +12,7 @@ import {CustomerModule} from "./modules/customer/customer.module";
 import {RegionModule} from "./modules/region/region.module";
 import {CartModule} from "./modules/cart/cart.module";
 import {InvoiceModule} from "./modules/invoice/invoice.module";
+import {LayoutModule} from "./modules/layout/layout.module";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {InvoiceModule} from "./modules/invoice/invoice.module";
     CustomerModule,
     RegionModule,
     CartModule,
-    InvoiceModule
+    InvoiceModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

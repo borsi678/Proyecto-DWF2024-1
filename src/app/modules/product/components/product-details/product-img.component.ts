@@ -15,7 +15,7 @@ import {NgxPhotoEditorService} from "ngx-photo-editor";
 declare var $: any;
 
 @Component({
-  selector: 'app-product-img',
+  selector: 'app-product-details',
   templateUrl: './product-img.component.html',
   styleUrls: ['./product-img.component.css']
 })
