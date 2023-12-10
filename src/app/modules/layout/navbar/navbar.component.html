@@ -1,1 +1,58 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Inicio</a>
+        </li>
+        <div *ngFor="let category of categoryList;">
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{category.category}}</a>
+          </li>
+        </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administrar</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/category">Categorias</a>
+            <a class="dropdown-item" href="/customer">Clientes</a>
+            <a class="dropdown-item" href="/product">Productos</a>
+            <a class="dropdown-item" href="/region">Regiones</a>
+          </div>
+        </li>
+      </ul>
+      <!-- Topbar Navbar -->
+      <ul class="navbar-nav ml-auto">
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle dropdown-button" href="#" id="userDropdown" role="button"
+             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile" src="assets/imagenes/default/user.svg">Perfil
+          </a>
+          <!-- Dropdown - User Information -->
+          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in background-white"
+               aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Perfil
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+              Configuración
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Cerrar sesión
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -29,4 +29,8 @@ export class CategoryService {
   updateCategory(category : any, id : number){
     return this.http.put(this.url + this.route + "/" + id, category);
   }
+
+  getActiveCategories(){
+    return this.http.get<Category[]>(this.url + this.route + "/active");
+  }
 }
