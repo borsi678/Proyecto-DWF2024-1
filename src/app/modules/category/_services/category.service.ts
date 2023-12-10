@@ -26,6 +26,10 @@ export class CategoryService {
     return this.http.get<Category[]>(this.url + this.route);
   }
 
+  getCategory(id : string){
+    return this.http.get<Category>(this.url + this.route + '/' + id);
+  }
+
   updateCategory(category : any, id : number){
     return this.http.put(this.url + this.route + "/" + id, category);
   }

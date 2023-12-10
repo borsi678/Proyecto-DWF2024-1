@@ -1,1 +1,37 @@
-<p>products-img works!</p>
+<div style="max-width: 1280px; margin: auto;padding-top: 10px;">
+  <div class="card border-dark">
+
+    <!--Titulo-->
+
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md">
+          <h4 class="table-title">{{category.category}}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <!-- Item-->
+      <div class="row row-cols-1 row-cols-md-3 g-4" >
+        <div class="col" *ngFor="let product of productsList">
+          <div class="card " >
+            <img [src]="pathImg+product.image" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{product.product}}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">{{product.gtin}}</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Precio: ${{product.price}}</li>
+            </ul>
+            <div class="card-body">
+              <button type="button" class="btn btn-info" (click)="showProduct(product.gtin)">
+                Ver producto <i class="ph ph-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
