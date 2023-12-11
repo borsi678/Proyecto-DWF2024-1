@@ -10,11 +10,12 @@ import {CartComponent} from "./modules/cart/components/cart/cart.component";
 import {InvoiceComponent} from "./modules/invoice/components/invoice/invoice.component";
 import {InvoiceDetailsComponent} from "./modules/invoice/components/invoice-details/invoice-details.component";
 import {ProductsImgComponent} from "./modules/product/components/products-img/products-img.component";
+import {HomeComponent} from "./modules/home-page/home/home.component";
 
 const routes: Routes = [
   { path: "category", component: CategoryComponent },
   { path: "product", component: ProductComponent},
-  { path: "", component: CategoryComponent },
+  { path: "", component: HomeComponent },
   { path: "product/:gtin", component: ProductImgComponent},
   { path: "product/category/:id", component: ProductsImgComponent},
   { path: "customer", component: CustomerComponent},

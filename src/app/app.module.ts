@@ -13,6 +13,7 @@ import {RegionModule} from "./modules/region/region.module";
 import {CartModule} from "./modules/cart/cart.module";
 import {InvoiceModule} from "./modules/invoice/invoice.module";
 import {LayoutModule} from "./modules/layout/layout.module";
+import {HomePageModule} from "./modules/home-page/home-page.module";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {LayoutModule} from "./modules/layout/layout.module";
     RegionModule,
     CartModule,
     InvoiceModule,
-    LayoutModule
+    LayoutModule,
+    HomePageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
