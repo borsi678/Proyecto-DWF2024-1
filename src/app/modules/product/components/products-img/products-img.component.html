@@ -12,26 +12,126 @@
     </div>
 
     <div class="card-body">
-      <!-- Item-->
-      <div class="row row-cols-1 row-cols-md-3 g-4" >
-        <div class="col" *ngFor="let product of productsList">
-          <div class="card " >
-            <img [src]="pathImg+product.image" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{product.product}}</h5>
-              <h6 class="card-subtitle mb-2 text-body-secondary">{{product.gtin}}</h6>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Precio: ${{product.price}}</li>
+
+      <div class="row">
+        <div class="col-2">
+          <div class="row product-list">
+            <h6>Precios</h6>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="firstCheckbox">Hasta $500</label>
+                <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="secondCheckbox">Desde $501 a $1000</label>
+                <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="thirdCheckbox">Desde $1001 a $5000</label>
+                <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="fourthCheckbox">Desde $5001 a $10000</label>
+                <input class="form-check-input me-1" type="checkbox" value="" id="fourthCheckbox">
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="fifthCheckbox">Más de $10000</label>
+                <input class="form-check-input me-1" type="checkbox" value="" id="fifthCheckbox">
+              </li>
             </ul>
-            <div class="card-body">
-              <button type="button" class="btn btn-info" (click)="showProduct(product.gtin)">
-                Ver producto <i class="ph ph-eye"></i>
+          </div>
+          <div class="row product-list">
+            <h6>Marcas</h6>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="firstCheckbox">Apple</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="secondCheckbox">Samsung</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="thirdCheckbox">LG</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="fourthCheckbox">Hyundai</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="fifthCheckbox">Xioami</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+            </ul>
+          </div>
+          <div class="row product-list">
+            <h6>Descuentos</h6>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="firstCheckbox">Desde 10% OFF</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="secondCheckbox">Desde 25% OFF</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="thirdCheckbox">Desde 50% OFF</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="fourthCheckbox">Desde 60% OFF</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+              <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                <label class="form-check-label" for="fifthCheckbox">Desde 70% OFF</label>
+                <input class="form-check-input me-1" type="checkbox" value="" >
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-lg">
+          <div class="row container-sm " style="margin-left: 75%" >
+            <p class="col-2" style="padding: 0;margin: 0;width: 100px">Ordenar por</p>
+            <div class="btn-group col-1" style="width: 50px;padding: 0">
+              <button class="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+              style="padding: 0">
+                Mas populares
               </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Menor precio</a></li>
+                <li><a class="dropdown-item" href="#">Mayor precio</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item-->
+          <div class="row row-cols-1 row-cols-sm-4 g-4" >
+            <div class="col" *ngFor="let product of productsList">
+              <div class="card product" (click)="showProduct(product.gtin)" >
+                <div class="product-img-container">
+                  <img [src]="pathImg+product.image" alt="avatar"
+                       class="image">
+                  <div class="midlle">
+                    Ver producto <i class="ph ph-eye"></i>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{product.product}}</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">{{product.gtin}}</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Precio: ${{product.price}}</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>
