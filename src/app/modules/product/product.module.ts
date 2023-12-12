@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductImgComponent } from './components/product-details/product-img.component';
 import {NgxPhotoEditorModule} from "ngx-photo-editor";
 import { ProductsImgComponent } from './components/products-img/products-img.component';
-import {NgxDefaultImageModule} from "ngx-default-image";
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import {NgxDefaultImageModule} from "ngx-default-image";
     FormsModule,
     HttpClientModule,
     RouterModule,
-    NgxPhotoEditorModule,
-    NgxDefaultImageModule
+    NgxPhotoEditorModule
   ]
 })
 export class ProductModule { }

@@ -15,7 +15,7 @@ declare var $: any;
 export class CartComponent {
   cart : Cart [] = []
   rfc : any | string = "";
-  pathImg : string = "../../../../../assets/imagenes/";
+  pathImg : string = "assets/imagenes/";
 
   constructor(private formBuilder : FormBuilder,
               private cartService : CartService,

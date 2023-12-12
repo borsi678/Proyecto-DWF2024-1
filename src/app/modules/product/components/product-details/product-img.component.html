@@ -1,17 +1,17 @@
 
 
 
-<div class="card mb-3" style="max-width: 1280px; padding-bottom: 20px " >
+<div class="card mb-3" style="max-width: 1280px; margin: auto;padding-top: 10px;" >
     <div class="card-header">
         <div class="row">
             <div class="col-md">
-            <span class="btn-span btn-return" (click)="redirect(['product'])">
+            <span class="btn-span btn-return" (click)="redirect(['product/category/'+product.category_id])">
                 <i class="ph ph-arrow-circle-left icon-text-button"></i>
                 Regresar
             </span>
             </div>
 
-            <div class="col-md">
+            <div class="col-md text-end" >
             <span class="btn-span btn-edit-product" (click)="showModalForm()">
                 <i class="ph ph-note-pencil icon-text-button"></i>
                 Editar producto
@@ -31,10 +31,17 @@
           <ng-container *ngFor="let productImg of productImgs ; let i = index">
             <div  [ngClass]="{'carousel-item active' : i == 0,
               'carousel-item' : i >= 0 }">
-              <img [src]="pathImg+productImg.image" class="d-block w-100 img-fluid rounded-start" alt="...">
+              <img [src]="pathImg+productImg.image"  class="d-block w-100 img-fluid rounded-start" alt="...">
             </div>
           </ng-container>
+        <div>
+          <div  *ngIf="productImgs.length == 0" >
+            <div class="carousel-item active">
+              <img [src]="'assets/default-imgs/product-img.png'"  class="d-block w-100 img-fluid rounded-start" alt="...">
+            </div>
 
+          </div>
+        </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

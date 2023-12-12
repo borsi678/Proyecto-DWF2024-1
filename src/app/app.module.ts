@@ -14,7 +14,6 @@ import {CartModule} from "./modules/cart/cart.module";
 import {InvoiceModule} from "./modules/invoice/invoice.module";
 import {LayoutModule} from "./modules/layout/layout.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
-import {NgxDefaultImageModule} from "ngx-default-image";
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import {NgxDefaultImageModule} from "ngx-default-image";
     InvoiceModule,
     LayoutModule,
     HomePageModule,
-    NgxDefaultImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
