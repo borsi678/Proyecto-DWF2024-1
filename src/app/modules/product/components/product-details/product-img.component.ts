@@ -128,10 +128,10 @@ export class ProductImgComponent {
   }
 
   getProductImg(){
-    console.log(this.product.product_id);
     this.productImgService.getProductImg(this.product.product_id).subscribe(
       res => {
         this.productImgs = res;
+        console.log(res);
       },
       error =>{
         this.alertError(error.error.message);
@@ -182,6 +182,7 @@ export class ProductImgComponent {
       error => this.alertError(error.error.message)
     );
   }
+
 
   /*Form methods*/
 

@@ -49,6 +49,9 @@
   color: white;
 }
 
+.product:hover{
+  cursor: pointer;
+}
 
 .dropdown-item {
   color: black !important;

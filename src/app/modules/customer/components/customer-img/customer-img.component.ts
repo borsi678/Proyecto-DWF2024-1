@@ -9,7 +9,6 @@ import { RegionService } from '../../../region/_services/region.service';
 import { NgxPhotoEditorService } from 'ngx-photo-editor';
 import { CustomerImageService } from '../../_services/customer-image.service';
 import { CustomerImage } from '../../_models/CustomerImage';
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 declare var $: any; // jquery
 @Component({
@@ -114,7 +113,9 @@ export class CustomerImgComponent {
     this.getCustomer();
   }
 
-
+  onImgError(event : any) {
+    event.target.src = 'assets/default-imgs/customer-profile.png';
+  }
 
   /*Form*/
   onSubmit(){
@@ -166,4 +167,5 @@ export class CustomerImgComponent {
       timer: 2000
     });
   }
+
 }

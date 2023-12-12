@@ -1,28 +1,16 @@
 <div class="container py-5">
 
-
-  <div class="row">
-    <div class="col">
-      <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-        <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="#">Incio</a></li>
-          <li class="breadcrumb-item"><a href="#">Clientes</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Detalles del cliente</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-
   <div class="row">
     <div class="col-lg-4">
       <div class="card mb-4">
         <div class="card-body text-center">
           <div class="profile-img-container">
             <label for="uploadImage" >
-              <img src="{{customer.image.image != '' ? customer.image.image: '../../../../../assets/imagenes/customer-profile.png'}}" alt="avatar"
-                   class="rounded-circle img-fluid image" style="width: 150px;">
+              <img [src]="customer.image.image" (error)="onImgError($event)" alt="avatar"
+                   class="rounded-circle img-fluid image" style="width: 200px;">
               <div class="midlle">
                   <i class="ph ph-camera-plus text"></i>
+                  <p class="text-primary">Cambiar imagen</p>
                   <input type="file" (change)="fileChangeHandler($event)" id="uploadImage" style="display:none">
               </div>
             </label>
@@ -30,7 +18,7 @@
 
           <h5 class="my-3">{{customer.name}} {{customer.surname}}</h5>
           <p class="text-muted mb-1">Pedidos: 10</p>
-          <div class="tb-4"><span class="badge rounded-pill bg-info">Premium</span></div>
+          <div class="tb-4"><span class="badge rounded-pill bg-info">Premium <i class="ph ph-package"></i></span></div>
         </div>
       </div>
     </div>

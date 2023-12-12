@@ -1,7 +1,64 @@
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Carrito</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+  </div>
+  <div class="offcanvas-body" *ngIf="cart.length > 0">
+    <div class="row">
+      <div class="col-8">
+
+        <table class="table table-hover">
+          <thead>
+          <tr class="t_head">
+            <th  scope="col">No.</th>
+            <th  scope="col">Imagen</th>
+            <th  scope="col">Producto</th>
+            <th  scope="col">Precio</th>
+            <th  scope="col">Cantidad</th>
+            <th  scope="col">Eliminar</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="table-primary t_value" *ngFor="let item of cart; let i = index">
+            <th  scope="row">{{i+1}}</th>
+            <td ><img [src]="pathImg+item.image" class="d-block w-100 img-fluid rounded-start" alt="..."></td>
+            <td >{{item.product.product}}</td>
+            <td>{{item.product.price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>
+              <div>
+                <button type="button" class="btn-close" (click)="removeFromCart(item.cart_id)">
+                  <i class="ph ph-x color-red"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-danger btn-empty" (click)="clearCart()">Vaciar <i class="ph ph-shopping-cart icon-btn"></i></button>
+      </div>
+      <div class="col-4">
+        <h5>Informacion de carrito</h5>
+        <button type="button" class="btn btn-info" (click)="showInvoice()">
+          Pagar <i class="ph ph-credit-card icon-btn"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas-body position-relative" *ngIf="cart.length == 0" style="height: 100px">
+    <p class="text-primary  position-absolute top-50 start-50 translate-middle "
+    >No hay productos en el carrito.</p>
+  </div>
+</div>
+
+<!--
 <div style="max-width: 1280px; margin: auto;padding-top: 10px;">
   <div class="card border-dark">
 
-    <!--Titulo-->
+
 
     <div class="card-header">
       <div class="row">
@@ -11,10 +68,10 @@
       </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" *ngIf="cart.length > 0">
       <div class="row">
         <div class="col-8">
-          <!--Tabla-->
+
           <table class="table table-hover">
             <thead>
             <tr class="t_head">
@@ -52,7 +109,11 @@
           </button>
         </div>
       </div>
-
+    </div>
+    <div class="card-body position-relative" *ngIf="cart.length == 0" style="height: 100px">
+      <p class="text-primary  position-absolute top-50 start-50 translate-middle "
+      >No hay productos en el carrito.</p>
     </div>
   </div>
 </div>
+-->
