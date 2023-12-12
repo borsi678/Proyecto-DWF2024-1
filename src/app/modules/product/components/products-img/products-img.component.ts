@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {Category} from "../../../category/_models/category";
 import {CategoryService} from "../../../category/_services/category.service";
+import {NgxDefaultImageModule} from "ngx-default-image";
+import { META } from "ngx-default-image";
 
 @Component({
   selector: 'app-products-img',
@@ -45,6 +47,10 @@ export class ProductsImgComponent {
     this.router.navigate(['product/' + gtin]);
   }
 
+  onImgError(event : any) {
+    event.target.src = 'assets/default-imgs/product-img.png';
+  }
+  
   /*Sweetalert methods*/
   alertSuccess(message: string){
     Swal.fire({

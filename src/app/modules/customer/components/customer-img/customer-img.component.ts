@@ -114,6 +114,9 @@ export class CustomerImgComponent {
     this.getCustomer();
   }
 
+  onImgError(event : any) {
+    event.target.src = 'assets/default-imgs/customer-profile.png';
+  }
 
 
   /*Form*/
@@ -166,4 +169,6 @@ export class CustomerImgComponent {
       timer: 2000
     });
   }
+
+  protected readonly error = error;
 }
