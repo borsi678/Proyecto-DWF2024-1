@@ -112,7 +112,7 @@
             <div class="col" *ngFor="let product of productsList">
               <div class="card product" (click)="showProduct(product.gtin)" >
                 <div class="product-img-container">
-                  <img [src]="pathImg+product.image" alt="avatar"
+                  <img [src]="product.image != '' ? product.image : 'assets/default-imgs/product-img.png'" alt="avatar"
                        class="image">
                   <div class="midlle">
                     Ver producto <i class="ph ph-eye"></i>
