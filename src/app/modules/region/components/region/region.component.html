@@ -1,0 +1,109 @@
+<div style="max-width: 1280px; margin: auto;padding-top: 10px;">
+    <div class="card border-dark">
+
+        <!--Titulo-->
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md">
+                    <h5 class="table-title">Regiones</h5>
+                </div>
+                <div class="col-md">
+                    <button type="button" class="btn btn-primary btn-new-ctry" (click)="showModalForm()"><i class="ph ph-list-plus icon-add-category"></i>Nueva categoria</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <!--Tabla-->
+            <table class="table table-hover">
+                <thead>
+                <tr class="t_head">
+                    <th  scope="col">No.</th>
+                    <th  scope="col">Codigo</th>
+                    <th  scope="col">Region</th>
+                    <th  scope="col">Estatus</th>
+                    <th  scope="col">Más</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table-dark t_value" *ngFor="let region of regions; let i = index">
+                    <th  scope="row">{{i+1}}</th>
+                    <td >{{region.code}}</td>
+                    <td >{{region.region}}</td>
+                    <td >
+                        <div class="td-status" [ngClass]="{'td-status-enable' : region.status == 1,
+                                           'td-status-disable' : region.status == 0}">
+                            {{region.status == 0 ? "Inactivo " : "Activo"}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown" aria-expanded="false"  aria-haspopup="true" class="dropdown-button">
+                                <i class="ph ph-caret-double-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <a class="dropdown-item" (click)="showModalFormUpdated(region)" >
+                                    <i class="ph ph-note-pencil icon-text-ul"></i>Editar
+                                </a>
+                                <a *ngIf="region.status == 0" class="dropdown-item enable-item" (click)="enableRegion(region.region_id)">
+                                    <i class="ph ph-check icon-text-ul"></i> Activar
+                                </a>
+                                <a *ngIf="region.status == 1" class="dropdown-item disable-item" (click)="disableRegion(region.region_id)">
+                                    <i class="ph ph-x icon-text-ul"></i> Desactivar
+                                </a>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Formulario Modal-->
+    <div class="modal fade"  tabindex="-1" role="dialog" id="modalForm" data-bs-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >{{ !regionUpdated ? "Registrar" : "Actualizar" }} categoria </h5>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario  -->
+
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                        <!-- code -->
+
+                        <div class="form-group">
+                            <label for="code">Código <span class="color-red">*</span> </label>
+                            <input type="text" class="form-control" formControlName="code" id="code" placeholder="Código de la region..."
+                                   [ngClass]="{'is-invalid': form.controls['code'].errors && submitted}" >
+                            <div *ngIf="form.controls['code'].errors && submitted">
+                                <small class="color-red">Favor de ingresar un código de region válido</small>
+                            </div>
+                        </div>
+
+                        <!-- region  -->
+
+                        <div class="form-group">
+                            <label for="region">Region <span class="color-red">*</span> </label>
+                            <input type="text" class="form-control" formControlName="region" id="region" placeholder="Nombre de la region."
+                                   [ngClass]="{'is-invalid': form.controls['region'].errors && submitted}" >
+                            <div *ngIf="form.controls['region'].errors && submitted">
+                                <small class="color-red">Favor de ingresar una region válida</small>
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
