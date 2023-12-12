@@ -8,6 +8,12 @@ import { CategoryModule } from "./modules/category/category.module";
 import { CategoryComponent } from './modules/category/components/category/category.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ProductModule} from "./modules/product/product.module";
+import {CustomerModule} from "./modules/customer/customer.module";
+import {RegionModule} from "./modules/region/region.module";
+import {CartModule} from "./modules/cart/cart.module";
+import {InvoiceModule} from "./modules/invoice/invoice.module";
+import {LayoutModule} from "./modules/layout/layout.module";
+import {HomePageModule} from "./modules/home-page/home-page.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import {ProductModule} from "./modules/product/product.module";
     CategoryModule,
     HttpClientModule,
     CommonModule,
-    ProductModule
+    ProductModule,
+    CustomerModule,
+    RegionModule,
+    CartModule,
+    InvoiceModule,
+    LayoutModule,
+    HomePageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

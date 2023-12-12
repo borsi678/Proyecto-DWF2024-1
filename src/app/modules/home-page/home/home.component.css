@@ -1,0 +1,13 @@
+p {
+  color: white;
+  font-size: 100px;
+  font-family: verdana, sans-serif;
+}
+p:hover{
+  cursor: pointer;
+}
+
+img {
+  cursor: pointer;
+}
+
