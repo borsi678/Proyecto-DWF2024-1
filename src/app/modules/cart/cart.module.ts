@@ -5,11 +5,14 @@ import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
-  declarations: [
-    CartComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        CartComponent
+    ],
+    exports: [
+        CartComponent
+    ],
+    imports: [
+        CommonModule
+    ]
 })
 export class CartModule { }

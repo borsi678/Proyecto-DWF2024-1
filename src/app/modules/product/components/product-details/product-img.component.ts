@@ -183,9 +183,6 @@ export class ProductImgComponent {
     );
   }
 
-  onImgError(event : any) {
-    event.target.src = 'assets/default-imgs/product-img.png';
-  }
 
   /*Form methods*/
 
